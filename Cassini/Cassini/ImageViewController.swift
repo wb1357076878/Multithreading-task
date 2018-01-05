@@ -13,7 +13,7 @@ class ImageViewController: UIViewController
     var imageURL: URL? {
         didSet {
             image = nil
-            if view.window != nil {
+            if view.window != nil { // 如果view是在Screen上的话，才去fetchImage()
                 fetchImage()
             }
         }
@@ -26,11 +26,6 @@ class ImageViewController: UIViewController
                 image = UIImage(data: imageData)
             }
         }
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        imageURL = DemoURL.stanford
     }
     
     override func viewWillAppear(_ animated: Bool) {

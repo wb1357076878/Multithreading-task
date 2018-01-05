@@ -13,6 +13,7 @@
 		2DD586A61FFE729B0051A8A7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2DD586A41FFE729B0051A8A7 /* LaunchScreen.storyboard */; };
 		2DD586AF1FFE73950051A8A7 /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD586AE1FFE73950051A8A7 /* ImageViewController.swift */; };
 		2DD586B11FFE77970051A8A7 /* DemoURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD586B01FFE77970051A8A7 /* DemoURL.swift */; };
+		2F98C27F1FFF1608000FAF10 /* CassiniViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F98C27E1FFF1608000FAF10 /* CassiniViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		2DD586A71FFE729B0051A8A7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2DD586AE1FFE73950051A8A7 /* ImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
 		2DD586B01FFE77970051A8A7 /* DemoURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoURL.swift; sourceTree = "<group>"; };
+		2F98C27E1FFF1608000FAF10 /* CassiniViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CassiniViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 		2DD5869A1FFE729B0051A8A7 /* Cassini */ = {
 			isa = PBXGroup;
 			children = (
+				2F98C27E1FFF1608000FAF10 /* CassiniViewController.swift */,
 				2DD586AE1FFE73950051A8A7 /* ImageViewController.swift */,
 				2DD5869F1FFE729B0051A8A7 /* Main.storyboard */,
 				2DD586B01FFE77970051A8A7 /* DemoURL.swift */,
@@ -150,6 +153,7 @@
 				2DD586AF1FFE73950051A8A7 /* ImageViewController.swift in Sources */,
 				2DD5869C1FFE729B0051A8A7 /* AppDelegate.swift in Sources */,
 				2DD586B11FFE77970051A8A7 /* DemoURL.swift in Sources */,
+				2F98C27F1FFF1608000FAF10 /* CassiniViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
