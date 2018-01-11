@@ -118,5 +118,22 @@ struct DemoURL {
     }()
 }
 ```
+#### 5. GCD(Multithreading)
+>实际上不用特意生成Dispatch Queue系统也会给我们提供几个。那就是Main Dispatch Queue和Global Dispatch Queue。
+>Main Dispatch Queue正如其名称中含有的“Main”一样，是在主线程中执行的Dispatch Queue。因为主线程只有1个，所以Main Dispatch Queue自然就是Serial Dispatch Queue。
+>追加到Main Dispatch Queue的处理在主线程的RunLoop中执行。由于在主线程中执行，因此要将用户界面的界面更新等一些必须在主线程中执行的处理追加到Main Dispatch Queue使用。这正好与NSObject类的performSelectorOnMainThread实例方法这一执行方法相同。
+>另一个Global Dispatch Queue是所有应用程序都能够使用的Concurrent Dispatch Queue。没有必要通过dispatch_queue_create函数逐个生成Concurrent Dispatch Queue。只要获取Global Dispatch Queue使用即可。
+>另外，Global Dispatch Queue有4个执行优先级，分别是高优先级（High Priority）、默认优先级（Default Priority）、低优先级（Low Priority）和后台优化级（Background Priority）。通过XNU内核管理的用于Global Dispatch Queue的线程，将各自使用的Global Dispatch Queue的执行优化级作为线程的执行优先级使用。在向Global Dispatch Queue追加处理时，应选择与处理内容对应的执行优先级的Global Dispatch Queue。
+>但是通过XNU内核用于Global Dispatch Queue的线程并不能保证实时性，因此执行优先级只是大致的判断。例如在处理内容的执行可有可无时，保用后台优化级的Global Dispatch Queue等，只能进行这种程序的区分。
+```
+DispatchQueue.global(qos: .userInitiated).async { [weak weakSelf = self] in
+    let urlContents = try? Data(contentsOf: url)
+    if let imageData = urlContents, url == weakSelf?.imageURL {
+        DispatchQueue.main.async {
+            weakSelf?.image = UIImage(data: imageData)
+        }
+    }
+}
+```
 最后源代码[地址](https://github.com/wb1357076878/Multithreading-task)
 

@@ -18,13 +18,22 @@ class ImageViewController: UIViewController
             }
         }
     }
+    
+    @IBOutlet weak var spiner: UIActivityIndicatorView!
+    
     // 这部操作是耗时的
     private func fetchImage() {
         if let url = imageURL {
-            let urlContents = try? Data(contentsOf: url)
-            if let imageData = urlContents {
-                image = UIImage(data: imageData)
+            spiner.startAnimating()
+            DispatchQueue.global(qos: .userInitiated).async { [weak weakSelf = self] in
+                let urlContents = try? Data(contentsOf: url)
+                if let imageData = urlContents, url == weakSelf?.imageURL {
+                    DispatchQueue.main.async {
+                        weakSelf?.image = UIImage(data: imageData)
+                    }
+                }
             }
+            
         }
     }
     
@@ -55,6 +64,7 @@ class ImageViewController: UIViewController
             imageView.image = newValue
             imageView.sizeToFit()
             scrollView?.contentSize = imageView.frame.size
+            spiner?.stopAnimating()
         }
     }
 }
